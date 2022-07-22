@@ -17,3 +17,5 @@ Git as VCS
 IntelliJ as IDE
 
 MySQL as Database
+
+SCSS as CSS preprocessor
