@@ -20,9 +20,10 @@ public class MainDemoApp {
             tempAccount.setLevel("2");
 
             //call business method
-            accountDAO.addAccount(tempAccount);
+            accountDAO.addAccount(tempAccount, true);
 
             membershipDao.addMembershipAccount();
+            membershipDao.upgradeMembership();
         }
     }
 }

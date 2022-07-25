@@ -7,4 +7,9 @@ public class MembershipDAO {
     public void addMembershipAccount(){
         System.out.println(getClass() + ": doing Membership work: Adding a membership account");
     }
+
+    public void upgradeMembership(){
+        System.out.println(getClass() +": doing Membership work: Upgrading membership");
+    }
+
 }
