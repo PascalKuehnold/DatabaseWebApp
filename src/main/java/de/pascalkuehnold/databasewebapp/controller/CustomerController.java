@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- *
+ * Controller class for the customers
  */
 @Controller
 @RequestMapping(value = "/customer")
 public class CustomerController {
 
-    //need to inject the customer dao
+    //declaration for customer service
     private CustomerService customerService;
 
     /**
