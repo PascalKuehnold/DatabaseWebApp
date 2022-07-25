@@ -16,8 +16,32 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     @Transactional
-    public List<Customer> getCustomers() {
-        return customerDAO.getCustomers();
+    public List<Customer> getCustomers(int sortValue) {
+        return customerDAO.getCustomers(sortValue);
+    }
+
+    @Override
+    @Transactional
+    public void saveCustomer(Customer customer) {
+        customerDAO.saveCustomer(customer);
+    }
+
+    @Override
+    @Transactional
+    public Customer getCustomer(int id) {
+        return customerDAO.getCustomer(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCustomer(int id) {
+        customerDAO.deleteCustomer(id);
+    }
+
+    @Override
+    @Transactional
+    public List<Customer> searchCustomers(String customerName) {
+        return customerDAO.searchCustomers(customerName);
     }
 
     //inject the customerDAO
@@ -25,4 +49,5 @@ public class CustomerServiceImpl implements CustomerService{
     public void setCustomerDAO(CustomerDAO customerDAO) {
         this.customerDAO = customerDAO;
     }
+
 }
