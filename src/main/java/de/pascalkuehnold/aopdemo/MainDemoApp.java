@@ -16,8 +16,14 @@ public class MainDemoApp {
             MembershipDAO membershipDao = context.getBean("membershipDAO", MembershipDAO.class);
 
             Account tempAccount = new Account();
-            tempAccount.setLevel("Jame");
+            tempAccount.setName("Jame");
             tempAccount.setLevel("2");
+
+            accountDAO.setName("foobar");
+            accountDAO.setServiceCode("silver");
+
+            String name = accountDAO.getName();
+            String code = accountDAO.getServiceCode();
 
             //call business method
             accountDAO.addAccount(tempAccount, true);

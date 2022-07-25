@@ -17,12 +17,16 @@ public class DemoLoggingAspect {
     private void forDaoPackage() {}
 
     //for getter in package dao
-    @Pointcut("execution(* de.pascalkuehnold.aopdemo.dao.*.get())")
+    @Pointcut("execution(* de.pascalkuehnold.aopdemo.dao.*.get(..))")
     private void forGetters() {}
 
     //for setter in package dao
-    @Pointcut("execution(* de.pascalkuehnold.aopdemo.dao.*.set())")
+    @Pointcut("execution(* de.pascalkuehnold.aopdemo.dao.*.set(..))")
     private void forSetters() {}
+
+    //cor including package but excluding getter/setter
+    @Pointcut("forDaoPackage() && !(forGetters() || forSetters())")
+    private void forDaoPackageNoGetterSetter() {}
 
     //endregion Pointcut declarations
 
@@ -75,14 +79,14 @@ public class DemoLoggingAspect {
     //@Before advice
     //pointcut is generated as method on top
     //executing for everything within .dao package
-    @Before("forDaoPackage()")
+    @Before("forDaoPackageNoGetterSetter()")
     public void beforeAddAccountAdvice(){
-        System.out.println("\n=====>>> Executing @Before advice on all methods in .dao package");
+        System.out.println("=====>>> Executing @Before advice on all methods in .dao package");
     }
 
-    @Before("forDaoPackage()")
+    @Before("forDaoPackageNoGetterSetter()")
     public void performApiAnalytics() {
-        System.out.println("\n=====>>> Performing API analytics");
+        System.out.println("=====>>> Performing API analytics");
     }
 
 }
